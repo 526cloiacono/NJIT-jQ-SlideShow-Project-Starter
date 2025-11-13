@@ -49,3 +49,20 @@ $(document).ready(() => {
   fetchJSON();
   setTimeout(() => swapPhoto(), 500); // Show first image after JSON loads
 });
+//5
+function showNextPhoto() {
+  mCurrentIndex++;
+  if (mCurrentIndex >= mImages.length) mCurrentIndex = 0;
+  swapPhoto();
+}
+
+function showPrevPhoto() {
+  mCurrentIndex--;
+  if (mCurrentIndex < 0) mCurrentIndex = mImages.length - 1;
+  swapPhoto();
+}
+
+$(document).ready(() => {
+  $('#nextPhoto').click(showNextPhoto);
+  $('#prevPhoto').click(showPrevPhoto);
+});
