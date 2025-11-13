@@ -4,15 +4,11 @@ let mImages = [];
 // Fetch JSON data and store it in mImages
 function fetchJSON() {
   $.ajax({
-    url: 'images.json',      // your local JSON file
+    url: 'images.json',      // Local JSON file
     dataType: 'json',
     success: function (data) {
-      // store the images array from JSON
-      mImages = data.images;
+      mImages = data.images; // Store image array
       console.log('JSON loaded:', mImages);
-
-      // display the first image after loading
-      showImage(0);
     },
     error: function (xhr, status, error) {
       console.error('Error loading JSON:', error);
@@ -20,21 +16,27 @@ function fetchJSON() {
   });
 }
 
-// Display one image and its metadata
+// Run when page is ready
+$(document).ready(() => {
+  fetchJSON();
+});
+
 function showImage(index) {
   if (!mImages.length) return; // stop if nothing loaded
 
-  const img = mImages[index]; // get the current image info
+  const img = mImages[index];
 
-  // Update image and text on the page
+  // Update the main image and metadata
   $('#photo').attr('src', img.imgPath);
   $('.location').text('Location: ' + img.imgLocation);
   $('.description').text('Description: ' + img.description);
   $('.date').text('Date: ' + img.date);
 }
 
-// Run when page is ready
 $(document).ready(() => {
-  $('.details').hide(); // optional: hide details until later
-  fetchJSON(); // load JSON and show first image
+  $('.details').hide();
+  fetchJSON();
+
+  // show first image after JSON loads
+  setTimeout(() => showImage(0), 500);
 });
