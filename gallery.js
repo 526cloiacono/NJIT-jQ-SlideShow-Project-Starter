@@ -1,14 +1,28 @@
-let mCurrentIndex = 0;
-let mImages = [];
+// gallery.js
 
-// Fetch JSON data and store it in mImages
+// Milestone 1: Initial setup
+let mCurrentIndex = 0; // Tracks the current image index
+let mImages = []; // Array to hold gallery image objects
+const mUrl = 'images.json'; // Replace with your actual JSON file or URL
+const mWaitTime = 5000; // Timer interval (milliseconds)
+let mTimer = null; // Store the timer reference
+
+$(document).ready(() => {
+  console.log("Gallery initialized.");
+});
+
+// 3
 function fetchJSON() {
   $.ajax({
-    url: 'images.json',      // Local JSON file
+    url: mUrl,
     dataType: 'json',
     success: function (data) {
-      mImages = data.images; // Store image array
-      console.log('JSON loaded:', mImages);
+      if (data.images) {
+        mImages = data.images;
+      } else {
+        mImages = data;
+      }
+      console.log('JSON data loaded:', mImages);
     },
     error: function (xhr, status, error) {
       console.error('Error loading JSON:', error);
@@ -16,27 +30,22 @@ function fetchJSON() {
   });
 }
 
-// Run when page is ready
 $(document).ready(() => {
   fetchJSON();
 });
+// 4
+function swapPhoto() {
+  if (!mImages.length) return;
 
-function showImage(index) {
-  if (!mImages.length) return; // stop if nothing loaded
+  const current = mImages[mCurrentIndex];
 
-  const img = mImages[index];
-
-  // Update the main image and metadata
-  $('#photo').attr('src', img.imgPath);
-  $('.location').text('Location: ' + img.imgLocation);
-  $('.description').text('Description: ' + img.description);
-  $('.date').text('Date: ' + img.date);
+  $('#photo').attr('src', current.imgPath);
+  $('.location').text('Location: ' + current.imgLocation);
+  $('.description').text('Description: ' + current.description);
+  $('.date').text('Date: ' + current.date);
 }
 
 $(document).ready(() => {
-  $('.details').hide();
   fetchJSON();
-
-  // show first image after JSON loads
-  setTimeout(() => showImage(0), 500);
+  setTimeout(() => swapPhoto(), 500); // Show first image after JSON loads
 });
