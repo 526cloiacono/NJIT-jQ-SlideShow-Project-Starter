@@ -66,3 +66,12 @@ $(document).ready(() => {
   $('#nextPhoto').click(showNextPhoto);
   $('#prevPhoto').click(showPrevPhoto);
 });
+//6
+function startTimer() {
+  if (mTimer) clearInterval(mTimer);
+  mTimer = setInterval(showNextPhoto, mWaitTime);
+}
+
+$(document).ready(() => {
+  startTimer();
+});
