@@ -1,20 +1,21 @@
 body {
     overflow-x: hidden;
     font-family: 'Century Gothic', sans-serif;
-    background-image: url('../img/geometry.jpg');
+    background-image: url('img/background\ img.webp');
     background-size: cover;
     background-attachment: fixed;
 }
 
 /* Main container for the slideshow and metadata */
 #photoBooth {
-    padding: 25px; /* Increased padding for better spacing */
-    max-width: 500px; /* Increased max-width for larger display */
-    width: 90%; /* Keeps width responsive */
+    padding: 25px;
+    max-width: 500px;
+    width: 90%;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.92);
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow */
+    border: 3px solid #FF5910; /* Mets orange */
+    box-shadow: 0px 4px 10px rgba(0, 56, 168, 0.4); /* Mets blue tint */
 }
 
 /* Holds the displayed photo */
@@ -29,63 +30,59 @@ body {
     max-width: 100%;
     height: auto;
     border-radius: 4px;
-    /* Optional: Add shadow here */
+    border: 3px solid #003DA5; /* Mets blue */
 }
 
 /* Style for the title/banner */
 .banner {
-    font-size: 2rem; /* Increased font size for better readability */
+    font-size: 2rem;
     font-weight: bold;
-    color: #333;
-    /* Optional: Customize the text color */
+    color: #003DA5; /* Mets blue */
+    text-shadow: 1px 1px #FF5910; /* Mets orange outline */
 }
 
 /* Style for the 'More Content' indicator */
 .moreIndicator {
-    height: 50px; /* Adjust size for a balanced look */
+    height: 50px;
     width: 50px;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Smooth rotation transition */
-    /* Add initial rotation styling here */
+    transition: transform 0.3s ease;
 }
 
 /* Navigation button styles */
 #nav img {
-    height: 50px; /* Adjust button size for responsiveness */
+    height: 50px;
     width: 50px;
     cursor: pointer;
-    transition: opacity 0.3s; /* Optional: Add hover effect */
+    transition: opacity 0.3s;
+    filter: drop-shadow(0 0 4px #003DA5);
 }
 
 /* Metadata container styling */
 .details {
-    border: 1px dashed #000;
+    border: 2px dashed #003DA5;
     padding: 15px;
-    background-color: #f8f9fa; /* Light background to distinguish from main area */
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 4px;
-    color: #333;
-    font-size: 1rem; /* Slightly larger text for readability */
+    color: #003DA5;
+    font-size: 1rem;
 }
 
 /* Style for each paragraph in details */
 .details p {
     margin: 10px 0;
+    color: #FF5910; /* Mets orange text */
 }
 
-/* Add CSS styles to rotate the element 90deg
-Make it animate nicely. You'll need CSS3 for this */
+/* Rotations */
 .rot90 {
-   rotate: 90deg;
+    rotate: 90deg;
 }
 
-/* Add CSS styles to rotate the element 180deg
-Make it animate nicely. You'll need CSS3 for this */
 .rot180 {
-   rotate: 180deg;
+    rotate: 180deg;
 }
 
-/* Add CSS styles to rotate the element 270deg
-Make it animate nicely. You'll need CSS3 for this */
 .rot270 {
-  rotate: 270;
+    rotate: 270deg;
 }
