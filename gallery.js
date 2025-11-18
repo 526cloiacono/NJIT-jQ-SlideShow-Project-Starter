@@ -75,3 +75,13 @@ function startTimer() {
 $(document).ready(() => {
   startTimer();
 });
+
+// Milestone 7 – Toggle details panel
+$(document).ready(() => {
+  $('.details').hide(); // hide details at start
+
+  $('.moreIndicator').click(function () {
+    $(this).toggleClass('rot90 rot270');
+    $('.details').slideToggle();
+  });
+});
